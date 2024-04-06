@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
             margin: 0;
             padding: 0;
             display: flex;
@@ -31,11 +31,12 @@
         input[type="text"],
         input[type="email"],
         input[type="password"] {
-            width: 100%;
+            width: calc(100% - 22px); /* Adjusted width to accommodate border */
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #cccccc;
             border-radius: 5px;
+            box-sizing: border-box; /* Include padding and border in the width */
         }
         .btn {
             background-color: #007bff;
