@@ -1,9 +1,6 @@
-ID,Name,QTY,QTY,FALSE
-1,Thing1,4,9,FALSE
+ID,Name,QTY1,QTY2,Diference
+1,Thing1,4,9,TRUE
 2,Thing2,23,1,FALSE
 3,Thing3,95,60,FALSE
-4,Thing4,2,2,TRUE
-5,Thing4,2,2,TRUE
-6,Thing4,2,2,TRUE
-7,Thing4,2,2,FALSE
-8,Thing5,8,20,FALSE
+4,Thing4,2,2,FALSE
+5,Thing5,8,20,FALSE

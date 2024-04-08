@@ -31,6 +31,9 @@ public class test{
             csvName.add(list[1]);  
             csvQTY.add(list[2]);
         }
+        csvID.remove(0);
+        csvName.remove(0);
+        csvQTY.remove(0);
         String[] csvIDFin = csvID.toArray(new String[0]);
         String[] csvNameFin = csvName.toArray(new String[0]);
         String[] csvQTYFin = csvQTY.toArray(new String[0]);
@@ -55,25 +58,25 @@ public class test{
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 
-           // writer.write("ID,Name,QTY1,QTY2,Diference");
-           // writer.newLine();
+            writer.write("ID,Name,QTY1,QTY2,Diference");
+            writer.newLine();
 
         int count = 0;
+        
         for (String s: csv1.get(0)) {
-            if (s.equalsIgnoreCase(csv2.get(0)[count])) {
+            if (s.equalsIgnoreCase(csv2.get(0)[0])) {
                 System.out.println("This is true");
                // writer.write();
-               writer.write(s + "," + csv1.get(1)[count] + "," + csv1.get(2)[count] + "," + csv2.get(2)[count] +  "," + "FALSE");
+               writer.write(s + "," + csv1.get(1)[count] + "," + csv1.get(2)[count] + "," + csv2.get(2)[count] +  "," + "TRUE");
                 writer.newLine();
-                count++;
             }
             else {
                 System.out.println("This is false");
-                writer.write(s + "," + csv1.get(1)[count] + "," + csv1.get(2)[count] + "," + csv2.get(2)[count] + "," + "TRUE");
+                writer.write(s + "," + csv1.get(1)[count] + "," + csv1.get(2)[count] + "," + csv2.get(2)[count] + "," + "FALSE");
                 writer.newLine();
             }
+            count++;
         }
-
     }
     catch (IOException e) {
         e.printStackTrace();
