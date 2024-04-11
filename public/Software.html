@@ -99,43 +99,5 @@
         </form>
     </div>
     <div class="results" id="results"></div>
-
-    <!-- <script>
-        function compareFiles() {
-            const fileInput1 = document.getElementById('fileInput1').files[0];
-            const fileInput2 = document.getElementById('fileInput2').files[0];
-            
-            if (!fileInput1 || !fileInput2) {
-                document.getElementById('results').innerHTML = "<p>Please select two files to compare.</p>";
-                return;
-            }
-            
-            const reader1 = new FileReader();
-            const reader2 = new FileReader();
-            
-            reader1.onload = function(e) {
-                reader2.onload = function(e2) {
-                    processContents(e.target.result, e2.target.result);
-                };
-                reader2.readAsText(fileInput2);
-            };
-            reader1.readAsText(fileInput1);
-        }
-
-        function processContents(content1, content2) {
-            const lines1 = content1.split(/\r?\n/);
-            const lines2 = content2.split(/\r?\n/);
-            
-            const duplicates = lines1.filter(line => lines2.includes(line));
-            const uniqueTo1 = lines1.filter(line => !lines2.includes(line));
-            const uniqueTo2 = lines2.filter(line => !lines1.includes(line));
-
-            let resultsHTML = `<h3>Duplicates</h3><ul>${duplicates.map(line => `<li>${line}</li>`).join('')}</ul>`;
-            resultsHTML += `<h3>Unique to File 1</h3><ul>${uniqueTo1.map(line => `<li>${line}</li>`).join('')}</ul>`;
-            resultsHTML += `<h3>Unique to File 2</h3><ul>${uniqueTo2.map(line => `<li>${line}</li>`).join('')}</ul>`;
-
-            document.getElementById('results').innerHTML = resultsHTML;
-        }
-    </script> -->
 </body>
 </html>
