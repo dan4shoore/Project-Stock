@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page HTML CSS | Codehal</title>
+    <style>
+        /* Add your custom CSS here */
+
+        body {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            color: #101010;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Set width */
+            height: 300px; /* Set height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 1em;
+            color: #333333;
+        }
+
+        .input-group {
+            margin-bottom: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group .icon {
+            width: 40px;
+            text-align: center;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 0.5em;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+        }
+
+        .forgot-pass {
+            text-align: right;
+            margin-bottom: 1em;
+        }
+
+        .forgot-pass a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .sign-link {
+            text-align: center;
+        }
+
+        .sign-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .sign-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 480px) {
+            .login-container {
+                padding: 1em;
+            }
+        }
+        #container{ 
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 40px); /* Set width */
+            height: calc(100% - 40px); /* Set height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,th,tr {
+            border-color: #101010;
+            border-bottom: 2pt solid black;
+            border-right: 2pt solid black;
+            border-left: 2pt solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="tablepage">
+            <div id="container">
+                <h2>Results</h2>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        async function getData() {
+            const utf8Decoder = new TextDecoder("utf-8");
+            const response = await fetch("/run");
+            let {value: data, done: readerDone} = await response.body.getReader().read();
+            data = data ? utf8Decoder.decode(data) : "";
+            return data;
+        }
+
+        async function drawTable() {
+            const data = await getData();
+            
+            const cells = data.trim().split("\r\n");
+            var table = document.createElement('table'), tr, td, row, cell, elements;
+            for (row = 0; row < cells.length; row++) {
+                tr = document.createElement('tr');
+                elements = cells[row].split(',');
+                for (cell = 0; cell < elements.length; cell++) {
+                    if (row == 0) {
+                        td = document.createElement('th');
+                        
+                    }
+                    else {
+                        td = document.createElement('td');
+                    }
+                    tr.appendChild(td);
+                    td.innerHTML = elements[cell];
+                }
+                table.appendChild(tr);
+            }
+            document.getElementById('container').appendChild(table);
+            var a = document.createElement("a");
+            a.href = "/Software.html";
+            a.innerHTML = "Back";
+            document.getElementById('container').appendChild(a);
+        }
+        drawTable();
+    </script>
+</body>
+</html>

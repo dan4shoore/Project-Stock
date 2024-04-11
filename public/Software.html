@@ -7,10 +7,10 @@
     <title>File Comparison Tool</title>
     <style>
         body, html {
-            height: 100%;
+            height: 80%;
+            width: 100%;
             margin: 0;
             padding: 0;
-            display: flex;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
@@ -24,13 +24,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 750px; 
-            margin: 20px;
+            width: 40%;
+            margin-top: 15%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .file-input-container {
             width: 100%; /* Ensures full width within the parent container */
-            margin: 10px 0;
+            align-items: center;
         }
 
         input[type="file"] {
@@ -84,19 +86,21 @@
 </head>
 <body>
     <div class="comparison-container">
-        <div class="file-input-container">
-            <h3>Inventory 1</h3>
-            <input type="file" id="fileInput1">
-        </div>
-        <div class="file-input-container">
-            <h3>Inventory 2</h3>
-            <input type="file" id="fileInput2">
-        </div>
-        <button class="btn" onclick="compareFiles()">Compare Files</button>
+        <form method="post" action="/load" enctype="multipart/form-data">
+            <div class="file-input-container">
+                <h3>Inventory 1</h3>
+                <input name="file-1" type="file" id="fileInput1">
+            </div>
+            <div class="file-input-container">
+                <h3>Inventory 2</h3>
+                <input name="file-2" type="file" id="fileInput2">
+            </div>
+            <button class="btn" type="submit">Compare Files</button>
+        </form>
     </div>
     <div class="results" id="results"></div>
 
-    <script>
+    <!-- <script>
         function compareFiles() {
             const fileInput1 = document.getElementById('fileInput1').files[0];
             const fileInput2 = document.getElementById('fileInput2').files[0];
@@ -132,6 +136,6 @@
 
             document.getElementById('results').innerHTML = resultsHTML;
         }
-    </script>
+    </script> -->
 </body>
 </html>
