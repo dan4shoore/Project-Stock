@@ -1,6 +1,6 @@
 ID,Name,QTY1,QTY2,Difference
-1,Thing1,12,12,false
-2,Thing2,12,12,false
-3,Thing3,95,60,true
-7,Thing7,9,2,true
-8,Thing8,73,20,true
+1,Thing1,43,43,false
+2,Thing2,23,1,true
+3,Thing3,953,600,true
+7,Thing7,93,2,true
+8,Thing8,73,200,true
