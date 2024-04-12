@@ -1,1 +1,1 @@
-java -cp C:\Users\David\AppData\Roaming\Code\User\workspaceStorage\321e5ee0d7730c67e020d785ee82d046\redhat.java\jdt_ws\html5up-stellar_c785d86a\bin test
+java test

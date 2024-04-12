@@ -53,7 +53,7 @@ function getData(req, res, source = "") {
 }
 
 
-const program = "C:\\Users\\David\\Documents\\COP Project\\html5up-stellar\\controllers\\run.bat";
+const program = join(__dirname, "run.bat");
 
 /**
  * 
@@ -68,7 +68,7 @@ function runProgram(res) {
         console.error(data.toString());
     });
     bat.on('exit', (code) => {
-        console.log(`Child exited with code ${code}`);
+        console.log("Comparison completed!");
         res.redirect("/client");  
    });
 }
