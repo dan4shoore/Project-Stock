@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page HTML CSS | Codehal</title>
     <style>
+        /* Add your custom CSS here */
 
         body {
             font-family: 'Open Sans', sans-serif;
@@ -102,64 +103,81 @@
                 padding: 1em;
             }
         }
+        #container{ 
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 40px); /* Set width */
+            height: calc(100% - 40px); /* Set height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,th,tr {
+            border-color: #101010;
+            border-bottom: 2pt solid black;
+            border-right: 2pt solid black;
+            border-left: 2pt solid black;
+        }
+
+
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <form id="loginForm">
-            <div class="login-container">
-                <h2>Login</h2>
-                <div class="input-group">
-                    <span class="icon">
-                        <ion-icon name="person"></ion-icon>
-                    </span>
-                    <input id="username" type="text" placeholder="Username" required>
-                </div>
-                <div class="input-group">
-                    <span class="icon">
-                        <ion-icon name="lock-closed"></ion-icon>
-                    </span>
-                    <input id="password" type="password" placeholder="Password" required>
-                </div>
-                <div class="forgot-pass">
-                    <a href="ForgetPassword.html" class="forgot-pass-link">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn">Login</button>
-                <div class="sign-link">
-                    <p>Don't have an account? <a href="register.html" class="register-link">Register</a></p>
-                </div>
+        <div class="tablepage">
+            <div id="container">
+                <h2>Results</h2>
             </div>
-        </form>
+        </div>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        async function getData() {
+            const utf8Decoder = new TextDecoder("utf-8");
+            const response = await fetch("/run");
+            let {value: data, done: readerDone} = await response.body.getReader().read();
+            data = data ? utf8Decoder.decode(data) : "";
+            return data;
+        }
+
+        async function drawTable() {
+            const data = await getData();
+            
+            const cells = data.trim().split("\r\n");
+            var table = document.createElement('table'), tr, td, row, cell, elements;
+            for (row = 0; row < cells.length; row++) {
+                tr = document.createElement('tr');
+                elements = cells[row].split(',');
+                for (cell = 0; cell < elements.length; cell++) {
+                    if (row == 0) {
+                        td = document.createElement('th');
+                        
+                    }
+                    else {
+                        td = document.createElement('td');
+                    }
+                    tr.appendChild(td);
+                    td.innerHTML = elements[cell];
+                }
+                table.appendChild(tr);
+            }
+            document.getElementById('container').appendChild(table);
+            var a = document.createElement("a");
+            a.href = "/index.html";
+            a.innerHTML = "Back";
+            document.getElementById('container').appendChild(a);
+        }
+        drawTable();
+    </script>
 </body>
-<script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Get form values
-        var username = document.getElementById('username').value;
-        var password = document.getElementById('password').value;
-
-        // Simple validation
-        if (username === '' || password === '') {
-            alert('Please enter both username and password.');
-            return;
-        }
-
-        
-        var successfulLogin = true; 
-        
-        if (successfulLogin) {
-            
-            alert('Login successful! Welcome, ' + username);
-
-            
-            window.location.href = 'index.html'; 
-        } else {
-            
-            alert('Login failed. Please try again.');
-        }
-    });
-</script>
+</html>

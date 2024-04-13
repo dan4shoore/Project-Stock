@@ -1,1 +1,1 @@
-java -cp C:\Users\David\AppData\Roaming\Code\User\workspaceStorage\bf9804c9c3604e2df6374e60e404046e\redhat.java\jdt_ws\cop-3530-assignment-1-Kazemanezak_464ddcfe\bin RuntimeAnalyzer
+java test
