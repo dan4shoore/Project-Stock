@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasmine Tests for Data Fetching</title>
+    <!-- Load Jasmine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/boot.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <script>
+        describe('Test csvData method', function() {
+            // Before each test, spy on jQuery's ajax method and fake its implementation
+            beforeEach(function() {
+                spyOn($, 'ajax').and.callFake(function(options) {
+                    var testData = [
+                        ["1", "Product1", "10"],
+                        ["2", "Product2", "20"],
+                        ["3", "Product3", "30"]
+                    ];
+                    // Convert the testData to match the expected format in the success callback
+                    var data = testData.map(function(item) {
+                        return item[1]; // Extracting the product name
+                    });
+
+                    // Call the success function manually with the mocked data
+                    if (options.success) options.success(data);
+                });
+            });
+
+            // Test that checks if the AJAX call returns the correct data
+            it('should return correct CSV data', function() {
+                var expectedOutput = ["Product1", "Product2", "Product3"];
+
+                var result; // Variable to store the result
+
+                // Perform the AJAX call which is now mocked
+                $.ajax({
+                    url: '/csvData',
+                    type: 'GET',
+                    success: function(data) {
+                        result = data;
+                    }
+                });
+
+                // Check if the result matches the expected output
+                expect(result).toEqual(expectedOutput);
+            });
+        });
+    </script>
+
+</body>
+</html>

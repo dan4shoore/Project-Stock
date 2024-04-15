@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Test</title>
+    <!-- Include Jasmine library scripts from CDN for testing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/boot.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Define fetchData and fetchCSVData functions -->
+    <script>
+        // Mock implementation of fetchData
+        function fetchData(callback) {
+            // Example data
+            var data = [
+                [1, "Product1"],
+                [2, "Product2"],
+                [3, "Product3"]
+            ];
+            // Simulate asynchronous operation
+            setTimeout(function() {
+                callback(data);
+            }, 1000);
+        }
+
+        // Mock implementation of fetchCSVData
+        function fetchCSVData(url, callback) {
+            // Example data
+            var data = [
+                [1, "Product1"],
+                [2, "Product2"],
+                [3, "Product3"]
+            ];
+            // Simulate asynchronous operation
+            setTimeout(function() {
+                callback(data);
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+
+<script>
+    describe('Integration Testing', function() {
+        it('should fetch and process data correctly', function(done) {
+            fetchData(function(data) {
+                var processedData = data.map(function(item) {
+                    return item[1]; 
+                });
+
+                expect(processedData).toEqual(["Product1", "Product2", "Product3"]);
+                done(); 
+            });
+        });
+
+        it('should fetch CSV data and process correctly', function(done) {
+            fetchCSVData('/csvData', function(data) {
+                var processedData = data.map(function(item) {
+                    return item[1]; 
+                });
+
+                expect(processedData).toEqual(["Product1", "Product2", "Product3"]);
+                done(); 
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

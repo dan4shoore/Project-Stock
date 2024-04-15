@@ -1,6 +1,60 @@
 ID,Name,QTY1,QTY2,Difference
-1,Thing1,43,43,false
-2,Thing2,23,1,true
-3,Thing3,953,600,true
-7,Thing7,93,2,true
-8,Thing8,73,200,true
+1,keychain,13,14,true
+2,bottle cap,59,38,true
+3,baseball,46,53,true
+4,lamp,97,97,false
+5,bottle of perfume,96,96,false
+6,fake flowers,91,91,false
+7,vase,35,35,false
+8,light,69,69,false
+9,class ring,20,20,false
+10,pillow,4,4,false
+11,paint brush,49,49,false
+12,sand paper,94,94,false
+13,roll of toilet paper,6,6,false
+14,twister,84,84,false
+15,steak knife,32,32,false
+16,socks,19,19,false
+17,cow,65,65,false
+18,phone,61,61,false
+19,floor,40,98,true
+20,tea pot,12,71,true
+21,tube of lipstick,82,36,true
+22,soccer ball,92,56,true
+23,spool of ribbon,80,57,true
+24,book,33,39,true
+25,tennis racket,79,66,true
+26,pillow,34,31,true
+27,basketball,100,21,true
+28,spectacles,41,2,true
+29,comb,37,55,true
+30,laser pointer,51,63,true
+31,needle,64,26,true
+32,hand mirror,27,70,true
+33,vase,7,54,true
+34,handful of change,76,90,true
+35,ice cream stick,50,10,true
+36,jigsaw puzzle,9,89,true
+37,street lights,16,75,true
+38,broccoli,3,47,true
+39,roll of masking tape,74,18,true
+40,pinecone,93,5,true
+41,acorn,29,62,true
+42,hammer,48,29,true
+43,salt shaker,42,48,true
+44,model car,8,42,true
+45,clothes,17,8,true
+46,spoon,99,17,true
+47,baseball,43,99,true
+48,bottle of syrup,23,43,true
+49,fish,28,23,true
+50,crow,52,28,true
+51,map,86,0,true
+52,plastic fork,95,0,true
+53,tree,22,0,true
+54,cookie jar,83,0,true
+55,canvas,30,0,true
+56,lion,72,0,true
+57,glasses,77,0,true
+58,mouse pad,24,0,true
+59,box of baking soda,78,0,true
