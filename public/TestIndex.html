@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Jasmine Tests for HTML</title>
+    <!-- Include Jasmine library scripts from CDN for testing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/boot.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script>
+        describe('HTML Page Test', function() {
+            beforeEach(function() {
+                
+                $('body').load('path/to/your/html/page.html');
+            });
+    
+            
+            it('should have a header with the text "Stock Aid"', function(done) {
+                setTimeout(function() {
+                    var headerText = $('#header h1').text().trim();
+                    expect(headerText).toEqual('Stock Aid');
+                    done();
+                }, 1000); 
+            });
+    
+            
+            it('should have navigation links', function(done) {
+                setTimeout(function() {
+                    var navLinks = $('#nav a');
+                    expect(navLinks.length).toBeGreaterThan(0);
+                    done();
+                }, 1000); 
+            });
+    
+            
+            it('should have a function to open user guide', function(done) {
+                setTimeout(function() {
+                    var openUserGuide = $('#cta a.primary');
+                    expect(openUserGuide.attr('href')).toEqual('register.html'); // Check if the link leads to the user guide
+                    done();
+                }, 1000); 
+            });
+    
+            
+            it('should have a link to Twitter', function(done) {
+                setTimeout(function() {
+                    var twitterLink = $('#footer .icons a[href="#"]');
+                    expect(twitterLink.length).toBeGreaterThan(0);
+                    done();
+                }, 1000); 
+            });
+    });
+</script>
+
+<!-- Your HTML content to be tested -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Stellar by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+        <header id="header" class="alt">
+            <span class="logo"><img src="images/logo.svg" alt="" /></span>
+            <h1>Stock Aid</h1>
+            <p>Master your inventory, master your market. Precision today defines tomorrow's potential.<br />
+
+        </header>
+
+    <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="#intro" class="active">Introduction</a></li>
+                <li><a href="#first">Product</a></li>
+                <li><a href="#second">User Guide</a></li>
+                <li><a href="#cta">Get Started</a></li>
+            </ul>
+        </nav>
+
+    <!-- Main -->
+        <div id="main">
+
+            <!-- Introduction -->
+                <section id="intro" class="main">
+                    <div class="spotlight">
+                        <div class="content">
+                            <header class="major">
+                                <h2>Introduction</h2>
+                            </header>
+                            <p>An inventory software designed to manage and enhance facilities by identifying
+                            mismatches in goods and quantity.
+                            Having a
+                            software capable of easing the maintenance of an inventory system, beneficial, and time
+                            saving for organizations.
+                            </p>
+                            <ul class="actions">
+                                <li><a href="generic.html" class="button">Learn More</a></li>
+                            </ul>
+                        </div>
+                        <span class="image"><img src="https://20995814.fs1.hubspotusercontent-na1.net/hub/20995814/hubfs/Skubana/Blog%20Pages/Imported_Blog_Media/Female%20entrepreneur%20holding%20a%20clipboard%20with%20inventory%20list-4.jpg?upsize=true&upscale=true&width=2400&height=1600&name=Female%20entrepreneur%20holding%20a%20clipboard%20with%20inventory%20list-4.jpg" alt="" /></span>
+                    </div>
+                </section>
+
+            <!-- First Section -->
+                <section id="first" class="main special">
+                    <header class="major">
+                        <h2>Product</h2>
+                    </header>
+                    <ul class="features">
+                        <li>
+                            <span class="icon solid major style1 fa-code"></span>
+                            <h3>Storage</h3>
+                            <p>Minimum 4GB of RAM.</p>
+                        </li>
+                        <li>
+                            <span class="icon major style3 fa-copy"></span>
+                            <h3>Efficiency</h3>
+                            <p>This software is efficient in comparing data, in order to provide a more accurate inventory.</p>
+                        </li>
+                        <li>
+                            <span class="icon major style5 fa-gem"></span>
+                            <h3>Cost</h3>
+                            <p> The software is little to no cost, monthly payments are required. Please call to learn more about prices on Stock Aid. </p>
+                        </li>
+                    </ul>
+                    <footer class="major">
+                        <ul class="actions special">
+                            <li><a href="generic.html" class="button">Learn More</a></li>
+                        </ul>
+                    </footer>
+                </section>
+
+            <!-- Second Section -->
+                <section id="second" class="main special">
+                    <header class="major">
+                        <h2>User Guide</h2>
+                        <p>Master your inventory, master your market.</p>
+                    </header>
+                    <ul class="statistics">
+                        <li class="style1">
+                            <span class="icon solid fa-code-branch"></span>
+                            <strong>Read</strong> Product
+                        </li>
+                        <li class="style2">
+                            <span class="icon fa-folder-open"></span>
+                            <strong>Learn</strong> User Guide
+                        </li>
+                        <li class="style3">
+                            <span class="icon solid fa-signal"></span>
+                            <strong>Installation</strong> Set up
+                        </li>
+                        <li class="style4">
+                            <span class="icon solid fa-laptop"></span>
+                            <strong>Get Stared</strong> Sign In
+                        </li>
+                        <li class="style5">
+                            <span class="icon fa-gem"></span>
+                            <strong>Upload Files</strong> Results
+                        </li>
+                    </ul>
+                    <p class="content">First, read about the product to have a better understanding what Stock Aid strives for. Second, use the User Guide for clear directiton on how to use and install the software. Install the software. Get Started with registering on our website to create a login. Once registered, upload the necessary files to receive results on your inventory. That easy! </p>
+                    <footer class="major">
+                        <ul class="actions special">
+                            <li><a href="https://acrobat.adobe.com/id/urn:aaid:sc:US:b2821c21-d982-4169-89d6-6630a196ad96" class="button">User Guide</a></li>
+                        </ul>
+                    </footer>
+                </section>
+
+            <!-- Get Started -->
+                <section id="cta" class="main special">
+                    <header class="major">
+                        <h2>Get Started</h2>
+                        <p>Use the Get Started button to register and sign in to start upoloading your inventory.</p>
+                    </header>
+                    <footer class="major">
+                        <ul class="actions special">
+                            <li><a href="register.html" class="button primary">Get Started</a></li>
+                            <li><a href="generic.html" class="button">Learn More</a></li>
+                        </ul>
+                    </footer>
+                </section>
+
+        </div>
+
+    <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <h2>Creators</h2>
+                <p>Abdias Appolon, David Castaneda, Daniel Rodriguez, and Tiara Herrera.</p>
+                <ul class="actions">
+                    <li><a href="generic.html" class="button">Learn More</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Company Information</h2>
+                <dl class="alt">
+                    <dt>Address</dt>
+                    <dd>11200 SW 8th St &bull; Miami, FL 33199 &bull; USA</dd>
+                    <dt>Phone</dt>
+                    <dd>(123) 456-7890 x 0000</dd>
+                    <dt>Email</dt>
+                    <dd><a href="#">information@StockAid.com</a></dd>
+                </dl>
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+                </ul>
+            </section>
+            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

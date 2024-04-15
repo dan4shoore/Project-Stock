@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Generic - Stellar by HTML5 UP</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+    
+    <!-- Include Jasmine library scripts from CDN for testing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/boot.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Test script -->
+    <script>
+        describe('HTML Page Test', function() {
+            
+            it('should have a header with the text "Product"', function() {
+                var headerText = $('#header h1').text().trim();
+                expect(headerText).toEqual('Product');
+            });
+
+            
+            it('should have main content section with proper content', function() {
+                var contentHeading = $('#content h2').eq(0).text().trim();
+                var contentText = $('#content p').eq(0).text().trim();
+                expect(contentHeading).toEqual('Stock Aid');
+                expect(contentText).toContain('Stock Aid is a program');
+            });
+
+            
+            it('should have a footer with creators information and company information', function() {
+                var creatorsHeading = $('#footer h2').eq(0).text().trim();
+                var companyAddress = $('#footer dl dt:contains("Address")').next().text().trim();
+                var companyPhone = $('#footer dl dt:contains("Phone")').next().text().trim();
+                var companyEmail = $('#footer dl dt:contains("Email")').next().text().trim();
+                expect(creatorsHeading).toEqual('Creators');
+                expect(companyAddress).toEqual('11200 SW 8th St • Miami, FL 33199 • USA');
+                expect(companyPhone).toEqual('(123) 456-7890 x 0000');
+                expect(companyEmail).toEqual('information@StockAid.com');
+            });
+        });
+    </script>
+
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <h1>Product</h1>
+            <p>Stock Aid, master your inventory.</p>
+        </header>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Content -->
+            <section id="content" class="main">
+                <span class="image main"><img src="https://cashflowinventory.com/blog/wp-content/uploads/2023/02/inventory-analysis.webp" alt=""></span>
+                <h2>Stock Aid</h2>
+                <p>
+                    Stock Aid is a program which aims to facilitate the search of faults in an inventory system. Whenever a shop or company does an inventory count, it can get difficult to spot the differences between the actual stock it has, and the one the system managing it says it has. Stock Aid quickly compares both inventory lists and shows in a couple seconds the differences in stock. Stock Aid strives to develop an inventory software design to manage and enhance facilities by identifying mismatches in goods and quantity. Addressing challenges faced by companies that are associated with traditional inventory check and change their perspective to a more innovative approach. By integrating Stock Aid, companies are expected to significantly enhance inventory management.
+                </p>
+                <h2>Purpose</h2>
+                <p>In any company or organization, no matter what the field of work is, it is always crucial to have an adequate level of inventory management. Inventory management key purposes are to maintain better business practices for profit and organization. Utilizing inventory management software will help get a handle on your inventory quickly and efficiently from stocking, purchasing, and montoring duplicate items. Understanding your inventory management will teach you demand changes overtime and inventory control. </p>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <h2>Creators</h2>
+                <p>Abdias Appolon, David Castaneda, Daniel Rodriguez, and Tiara Herrera.</p>
+                <ul class="actions">
+                    <li><a href="#" class="button">Learn More</a></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Company Information</h2>
+                <dl class="alt">
+                    <dt>Address</dt>
+                    <dd>11200 SW 8th St • Miami, FL 33199 • USA</dd>
+                    <dt>Phone</dt>
+                    <dd>(123) 456-7890 x 0000</dd>
+                    <dt>Email</dt>
+                    <dd><a href="#">information@StockAid.com</a></dd>
+                </dl>
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+                </ul>
+            </section>
+            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

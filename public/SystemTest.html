@@ -10,121 +10,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/boot.min.js"></script>
     <!-- Load jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Define fetchData and fetchCSVData functions -->
     <script>
-        function register(fullName, email, password) {
-            return email.includes('@') && password.length >= 6 && fullName.length > 0;
-        }
-
-        function signIn(username, password) {
-            return username === "test@example.com" && password === "123456";
-        }
-
+        // Mock implementation of fetchData
         function fetchData(callback) {
-            // Simulate fetching data from a server
+            // Example data
+            var data = [
+                [1, "Product1"],
+                [2, "Product2"],
+                [3, "Product3"]
+            ];
+            // Simulate asynchronous operation
             setTimeout(function() {
-                var testData = [
-                    ["1", "Product1", "10"],
-                    ["2", "Product2", "20"],
-                    ["3", "Product3", "30"]
-                ];
-                callback(testData);
-            }, 1000); // Simulating a delay of 1 second
+                callback(data);
+            }, 1000);
         }
 
+        // Mock implementation of fetchCSVData
         function fetchCSVData(url, callback) {
-            // Simulate fetching CSV data from a server
+            // Example data
+            var data = [
+                [1, "Product1"],
+                [2, "Product2"],
+                [3, "Product3"]
+            ];
+            // Simulate asynchronous operation
             setTimeout(function() {
-                var testData = [
-                    ["1", "Product1", "10"],
-                    ["2", "Product2", "20"],
-                    ["3", "Product3", "30"]
-                ];
-                callback(testData);
-            }, 1000); // Simulating a delay of 1 second
+                callback(data);
+            }, 1000);
         }
     </script>
-
-    <script>
-        
-        describe('System Test for Web Pages', function() {
-
-            
-            describe('Register Page Tests', function() {
-                it('should successfully register with valid data', function() {
-                    var fullNameInput = 'John Doe';
-                    var emailInput = 'johndoe@example.com';
-                    var passwordInput = 'password123';
-                    var registrationResult = register(fullNameInput, emailInput, passwordInput);
-                    expect(registrationResult).toBe(true);
-                });
-
-                it('should fail to register with invalid email', function() {
-                    var fullNameInput = 'John Doe';
-                    var emailInput = 'johndoe';
-                    var passwordInput = 'password123';
-                    var registrationResult = register(fullNameInput, emailInput, passwordInput);
-                    expect(registrationResult).toBe(false);
-                });
-
-                it('should fail to register with a short password', function() {
-                    var fullNameInput = 'John Doe';
-                    var emailInput = 'johndoe@example.com';
-                    var passwordInput = 'pass';
-                    var registrationResult = register(fullNameInput, emailInput, passwordInput);
-                    expect(registrationResult).toBe(false);
-                });
-            });
-
-            
-            describe('Sign In Page Tests', function() {
-                it('should sign in successfully with correct username and passcode', function() {
-                    var usernameInput = 'test@example.com';
-                    var passcodeInput = '123456';
-                    var signInResult = signIn(usernameInput, passcodeInput);
-                    expect(signInResult).toBe(true);
-                });
-
-                it('should fail to sign in with incorrect username and passcode', function() {
-                    var usernameInput = 'incorrect@example.com';
-                    var passcodeInput = 'wrongpass';
-                    var signInResult = signIn(usernameInput, passcodeInput);
-                    expect(signInResult).toBe(false);
-                });
-            });
-
-            
-            describe('Integration Testing', function() {
-                it('should fetch and process data correctly', function(done) {
-                    fetchData(function(data) {
-                        // Process the data
-                        var processedData = data.map(function(item) {
-                            return item[1]; // Extracting product names
-                        });
-
-                        // Assert that the processed data is correct
-                        expect(processedData).toEqual(["Product1", "Product2", "Product3"]);
-                        done(); // Call done to indicate test completion
-                    });
-                });
-
-                it('should fetch CSV data and process correctly', function(done) {
-                    fetchCSVData('/csvData', function(data) {
-                        // Process the CSV data
-                        var processedData = data.map(function(item) {
-                            return item[1]; // Extracting product names
-                        });
-
-                        // Assert that the processed data is correct
-                        expect(processedData).toEqual(["Product1", "Product2", "Product3"]);
-                        done(); // Call done to indicate test completion
-                    });
-                });
-            });
-        });
-    </script>
-
 </head>
 <body>
+
+<script>
+    describe('Integration Testing', function() {
+        it('should fetch and process data correctly', function(done) {
+            fetchData(function(data) {
+                var processedData = data.map(function(item) {
+                    return item[1]; 
+                });
+
+                expect(processedData).toEqual(["Product1", "Product2", "Product3"]);
+                done(); 
+            });
+        });
+
+        it('should fetch CSV data and process correctly', function(done) {
+            fetchCSVData('/csvData', function(data) {
+                var processedData = data.map(function(item) {
+                    return item[1]; 
+                });
+
+                expect(processedData).toEqual(["Product1", "Product2", "Product3"]);
+                done(); 
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

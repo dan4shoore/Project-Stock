@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Display Page Tests</title>
+    <!-- Include Jasmine library scripts from CDN for testing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/jasmine-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.8.0/boot.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        describe('CSV Data Display Page UI Tests', function() {
+            it('Should display the "Results"', function() {
+                var heading = document.querySelector('#container h2');
+                expect(heading.textContent).toBe('Results');
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Your CSV data display page HTML code -->
+    <div class="wrapper">
+        <div class="tablepage">
+            <div id="container">
+                <h2>Results</h2>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        async function getData() {
+            const utf8Decoder = new TextDecoder("utf-8");
+            const response = await fetch("/run");
+            let {value: data, done: readerDone} = await response.body.getReader().read();
+            data = data ? utf8Decoder.decode(data) : "";
+            return data;
+        }
+
+        async function drawTable() {
+            const data = await getData();
+            
+            const cells = data.trim().split("\r\n");
+            var table = document.createElement('table'), tr, td, row, cell, elements;
+            for (row = 0; row < cells.length; row++) {
+                tr = document.createElement('tr');
+                elements = cells[row].split(',');
+                for (cell = 0; cell < elements.length; cell++) {
+                    if (row == 0) {
+                        td = document.createElement('th');
+                        
+                    }
+                    else {
+                        td = document.createElement('td');
+                    }
+                    tr.appendChild(td);
+                    td.innerHTML = elements[cell];
+                }
+                table.appendChild(tr);
+            }
+            document.getElementById('container').appendChild(table);
+            var a = document.createElement("a");
+            a.href = "/index.html";
+            a.innerHTML = "Back";
+            document.getElementById('container').appendChild(a);
+        }
+        drawTable();
+    
+    </script>
+</body>
+</html>
